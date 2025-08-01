@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>Календар на {{ month }}/{{ year }}</h2>
+    <div>
+        {{ calendar|safe }}
+    </div>
+    
+    <h1> Кімната №{{ room.num_room }} </h1>
+    <h3> Кількість ліжок: {{ room.num_beds }} </h3>
+    <h3> Клас: {{ room.room_class }} </h3>
+    <h3> Ціна за день: {{ room.price }} грн </h3>
+
+    <h1> Зобронювати </h1>
+
+    <form method="post" action="{% url 'reservation' num_room=room.num_room %}">
+        {% csrf_token %}
+            <h3> Дата початку: </h3><input type="date" name="date_start">
+            <h3> Дата кінця: </h3><input type="date" name="date_end">
+            <button type="submit"> Зарезервувати </button>
+    </form>
+
+
+</body>
+</html>

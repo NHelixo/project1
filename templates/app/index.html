@@ -6,14 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    
+    {% include 'app/hat.html' %}
     <h1> Кімнати </h1>
     <h3> ----------------------------------------- </h3>
 
     {% if room_list %}
         {% for room in room_list %}
-            <h3> Номер: {{ room.num_room }} </h3>
-            <h3> Кількість ліжок: {{ room.num_beds }} </h3>
+            <a href="{% url 'room_detail' num_room=room.num_room %}"><h3> Номер: {{ room.num_room }} </h3></a>
             <h3> Клас: {{ room.room_class }} </h3>
             <h3> Ціна за день: {{ room.price }} грн </h3>
             <h3> ----------------------------------------- </h3>
